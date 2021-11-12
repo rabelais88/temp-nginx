@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  proxy:
+    image: nginx:1.21.4
+    volumes:
+     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+     - ./resources/the-celeb:/home/ubuntu/resources/the-celeb
+    ports:
+     - '8080:80'
+    # debugging mode
+    command: [nginx-debug, '-g', 'daemon off;']
